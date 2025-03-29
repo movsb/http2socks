@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/movsb/http2socks"
 	"github.com/spf13/cobra"
 )
 
@@ -21,7 +22,7 @@ func main() {
 		Run: func(cmd *cobra.Command, args []string) {
 			listen, _ := cmd.Flags().GetString(`listen`)
 			token, _ := cmd.Flags().GetString(`token`)
-			s := NewServer(token)
+			s := http2socks.NewServer(token)
 			if err := http.ListenAndServe(listen, s); err != nil {
 				log.Fatalln(err)
 			}
@@ -37,7 +38,7 @@ func main() {
 			listen, _ := cmd.Flags().GetString(`listen`)
 			server, _ := cmd.Flags().GetString(`server`)
 			token, _ := cmd.Flags().GetString(`token`)
-			c := NewClient(server, token)
+			c := http2socks.NewClient(server, token)
 			c.ListenAndServe(listen)
 		},
 	}

@@ -1,4 +1,4 @@
-package main
+package http2socks
 
 import (
 	"errors"
@@ -341,7 +341,7 @@ func (m *ConnectionResponse) Encode(w io.Writer) error {
 	return writeBytes(w, buf[:n])
 }
 
-func (c *Client) logger(local, remote io.ReadWriter) {
+func Logger(local, remote io.ReadWriter) {
 	var helloRequest HelloRequest
 	if err := helloRequest.Decode(local); err != nil {
 		log.Println(err)

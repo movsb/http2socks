@@ -1,4 +1,4 @@
-package main
+package http2socks
 
 import (
 	"io"
@@ -102,7 +102,7 @@ func (c *Client) serve(conn net.Conn) {
 	}
 	defer remote.Close()
 
-	c.logger(conn, remote)
+	// c.logger(conn, remote)
 
 	wg := &sync.WaitGroup{}
 	wg.Add(2)
