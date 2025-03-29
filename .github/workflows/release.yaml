@@ -20,7 +20,7 @@ jobs:
           PREFIX=.build/http2socks
 
           # args: OS ARCH
-          _build() { GOOS=$1 GOARCH=$2 go build -o $PREFIX-$1-$2; }
+          _build() { GOOS=$1 GOARCH=$2 go build -o $PREFIX-$1-$2 ./cmd/http2socks; }
 
           _build linux  arm64 &
           _build linux  amd64 &
